@@ -33,8 +33,5 @@ char	**gameoflife(t_data *data)
 			check_neighbours(data, row, col);
 	}
 	print_map(data->map2);
-	// printf("\n");
-	// print_map(data->map2);
-	
 	return NULL;
 }
