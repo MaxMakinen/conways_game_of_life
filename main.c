@@ -6,69 +6,66 @@
 /*   By: mmakinen <mmakinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:22:42 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/22 15:10:37 by mmakinen         ###   ########.fr       */
+/*   Updated: 2022/06/22 16:46:02 by mmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
+#include "gol.h"
 
-char	*prep_map(char *filename)
+void	init_data(t_data *data)
 {
-	int		fd = open(filename, O_RDONLY);
-	int		col = 0;
-	int		row = 0;
-	int		first = 1;
-	char	*map;
-	char	c;
-
-	while(read(fd, &c, 1) != -1)
+	int	count = 0;
+	while (count < 0)
 	{
-		if (c == '\n')
-		{
-			row++;
-			first = 0;
-		}
-		if (first = 1)
-			col++;
-		if (c == '\0')
-			break;
+		data->b[count] = 0;
+		data->s[count] = 0;
+		count++;
 	}
-	map = (char *)malloc((col * row) + row);
-	close(fd);
-	fd = open(filename, O_RDONLY);
-	map = read_map(fd, map);
-	return (map);
+	data->b_len = 0;
+	data->s_len = 0;
+	data->row = 0;
+	data->col = 0;
 }
 
-char	*read_map(int fd, char *map)
+void	std_rules(t_data *data)
 {
-	char	c;
-	char	*write = map;
+	data->b[0] = 3;
+	data->b_len = 1;
+	data->s[0] = 2;
+	data->s[1] = 3;
+	data->s_len = 2;
+}
 
-	while(read(fd, &c, 1) != -1)
+void	print_map(t_data *data)
+{
+	int	row = 0;
+	int	col = 0;
+
+	while (row < data->row)
 	{
-		if (c == '.')
+		col = 0;
+		while (col < data->col)
 		{
-			a
-			*write &= ~(1);
-			*write << 1;
+			printf("%c", data->map1[row][col]);
+			col++;
 		}
-		if (c == 'x')
-		{
-			*write &= 1;
-			*write << 1;
-		}
+		printf("\n");
+		row++;
 	}
 }
 
 int	main(int ac, char **av)
 {
-	int		fd = 0;
-	char	*map;
-	//TODO Make struct for line len info etc?
+	t_data	data;
+
+	init_data(&data);
 	if (ac == 3)
 	{
-		map = prep_map(av[1]);
-		
+		prep_map(av[1], &data);
+		data.iterations = atoi(av[2]);
+		std_rules(&data);
+		//TODO FOR TESTING: REMOVE.
+		print_map(&data);
+	}
+	printf(" - \n");
+}		
