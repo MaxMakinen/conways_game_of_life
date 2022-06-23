@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:22:42 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/23 11:39:33 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/23 11:44:44 by mmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,11 @@ int	main(int ac, char **av)
 		std_rules(&data);
 		//TODO FOR TESTING: REMOVE.
 		gameoflife(&data);
-		// print_map(&data, data.map1);
-		// print_map(&data, data.map2);
+		printf("col = %d\n", data.col);
+		print_map(&data, data.map1);
+		printf("col = %d\n", data.col);
+		print_map(&data, data.map2);
+		printf("col = %d\n", data.col);
 		
 	}
 	// printf(" - \n");

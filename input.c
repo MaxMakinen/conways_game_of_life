@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:37:02 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/23 11:54:09 by mmakinen         ###   ########.fr       */
+/*   Updated: 2022/06/23 14:41:31 by mmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_map(t_data *data, int len)
 	}
 }
 
-void	read_map(int fd, t_data *data)
+void	read_map(FILE *file, t_data *data)
 {
 	char	c;
 	int		row = 0;
@@ -49,7 +49,8 @@ void	read_map(int fd, t_data *data)
 		col = 0;
 		while (col < data->col + 1)
 		{
-			if (read(fd, &c, 1) == -1)
+			c = getc(file);
+			if (c == EOF)
 			{
 				dprintf(2, "Read ERROR\n");
 				exit(1);
@@ -66,19 +67,23 @@ void	read_map(int fd, t_data *data)
 
 void	prep_map(char *filename, t_data *data)
 {
-	int		fd = 0;
+	FILE	*file;
 	int		first = 1;
 	int		check = 0;
+	int		size = 0;
 	char	c;
 
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	file = fopen(filename, r);
+	if (fd == NULL)
 	{
 		dprintf(2, "Open ERROR\n");
 		exit(1);
 	}
-	check = read(fd, &c, 1);
-	while(check > 0)
+	fseek(file, 0, SEEK_END);
+	size = ftell(file);
+	rewind(file);
+	check = getc(file);
+	while(check != EOF)
 	{
 		if (c == '\n')
 		{
@@ -89,27 +94,17 @@ void	prep_map(char *filename, t_data *data)
 			data->col++;
 		if (c == '\0')
 			break;
-		check = read(fd, &c, 1);
+		check = getc(file);
 	}
-	if (check == -1)
+	if (check == EOF)
 	{
 		dprintf(2, "Read ERROR\n");
 		exit(1);
 	}
-	init_map(data, (data->col * data->row));
-	if (close(fd) == -1)
-	{
-		dprintf(2, "Close ERROR\n");
-		exit(1);
-	}
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		dprintf(2, "Open ERROR\n");
-		exit(1);
-	}
-	read_map(fd, data);
-	if (close(fd) == -1)
+	rewind(file);
+	init_map(data, size);
+	read_map(file, data);
+	if (fclose(file) == EOF)
 	{
 		dprintf(2, "Close ERROR\n");
 		exit(1);
