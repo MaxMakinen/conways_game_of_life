@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:37:02 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/23 14:41:31 by mmakinen         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:08:52 by mmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	read_map(FILE *file, t_data *data)
 	while (row < data->row)
 	{
 		col = 0;
-		while (col < data->col + 1)
+		while (col <= data->col)
 		{
 			c = getc(file);
 			if (c == EOF)
@@ -71,19 +71,20 @@ void	prep_map(char *filename, t_data *data)
 	int		first = 1;
 	int		check = 0;
 	int		size = 0;
-	char	c;
+	int		c;
 
-	file = fopen(filename, r);
-	if (fd == NULL)
+	file = fopen(filename, "r");
+	if (file == NULL)
 	{
 		dprintf(2, "Open ERROR\n");
 		exit(1);
 	}
 	fseek(file, 0, SEEK_END);
 	size = ftell(file);
+	printf("size = %d\n", size);
 	rewind(file);
-	check = getc(file);
-	while(check != EOF)
+	c = fgetc(file);
+	while(c != EOF)
 	{
 		if (c == '\n')
 		{
@@ -94,8 +95,10 @@ void	prep_map(char *filename, t_data *data)
 			data->col++;
 		if (c == '\0')
 			break;
-		check = getc(file);
+		c = fgetc(file);
 	}
+	printf("datacol: %d\n", data->col);
+	printf("datarow: %d\n", data->row);
 	if (check == EOF)
 	{
 		dprintf(2, "Read ERROR\n");
