@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:37:02 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/23 11:40:27 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/23 11:54:09 by mmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ void	read_map(int fd, t_data *data)
 	while (row < data->row)
 	{
 		col = 0;
-		while (col < data->col)
+		while (col < data->col + 1)
 		{
 			if (read(fd, &c, 1) == -1)
 			{
 				dprintf(2, "Read ERROR\n");
 				exit(1);
 			}
-			if (c == '.')
-				data->map1[row][col] = '.';
 			if (c == 'x' || c == 'X')
 				data->map1[row][col] = 'x';
+			if (c == '.')
+				data->map1[row][col] = '.';
 			col++;
 		}
 		row++;
@@ -80,13 +80,13 @@ void	prep_map(char *filename, t_data *data)
 	check = read(fd, &c, 1);
 	while(check > 0)
 	{
-		if (first == 1)
-			data->col++;
 		if (c == '\n')
 		{
 			data->row++;
 			first = 0;
 		}
+		if (first == 1)
+			data->col++;
 		if (c == '\0')
 			break;
 		check = read(fd, &c, 1);
