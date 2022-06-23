@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:22:42 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/23 13:12:22 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/23 16:01:23 by mmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	init_data(t_data *data)
 	data->s_len = 0;
 	data->row = 0;
 	data->col = 0;
+	data->head = NULL;
+	data->top = NULL;
 }
 
 void	std_rules(t_data *data)
@@ -52,6 +54,7 @@ void	print_map(t_data *data, char **map)
 		printf("\n");
 		row++;
 	}
+	print_list(data->head);
 }
 
 int	main(int ac, char **av)

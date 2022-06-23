@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:37:02 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/23 15:59:48 by mmakinen         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:47:20 by mmakinen         ###   ########.fr       */
 /*   Updated: 2022/06/23 13:59:39 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -65,7 +65,6 @@ void	read_map(FILE *file, t_data *data)
 				}
 				else
 					data->top = stack_add(data->top, row, col);
-			}
 			if (c == '.')
 				data->map1[row][col] = '.';
 			col++;

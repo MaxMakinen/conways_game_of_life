@@ -1,3 +1,4 @@
 *.out
 *.gch
+*.swp
 mvp_version/life
