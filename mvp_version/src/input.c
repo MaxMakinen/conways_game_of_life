@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:37:02 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/23 11:54:09 by mmakinen         ###   ########.fr       */
+/*   Updated: 2022/06/23 13:59:39 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	init_map(t_data *data, int len)
 	int		counter = 0;
 	char	*temp1;
 	char	*temp2;
-	// printf("col: %d\n", len);
 
 	data->pool1 = (char *)malloc(sizeof(char) * len);
 	bzero(data->pool1, (sizeof(char) * len));
@@ -55,7 +54,7 @@ void	read_map(int fd, t_data *data)
 				exit(1);
 			}
 			if (c == 'x' || c == 'X')
-				data->map1[row][col] = 'x';
+				data->map1[row][col] = 'X';
 			if (c == '.')
 				data->map1[row][col] = '.';
 			col++;
@@ -114,5 +113,4 @@ void	prep_map(char *filename, t_data *data)
 		dprintf(2, "Close ERROR\n");
 		exit(1);
 	}
-	printf("datacol: %d\n", data->col);
 }
