@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:53:49 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/23 15:21:19 by mmakinen         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:37:55 by mmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include <strings.h>
 # include <string.h>
 
 typedef struct s_list
