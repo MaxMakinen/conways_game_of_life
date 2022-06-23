@@ -6,15 +6,18 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:53:49 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/23 12:12:01 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/23 13:27:19 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <strings.h>
+#ifndef GOL_H
+# define GOL_H
+
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <strings.h>
+# include <unistd.h>
 
 typedef struct s_data
 {
@@ -37,3 +40,4 @@ void	init_map(t_data *data, int len);
 void	print_map(t_data *data, char **map);
 void	gameoflife(t_data *data);
 
+#endif

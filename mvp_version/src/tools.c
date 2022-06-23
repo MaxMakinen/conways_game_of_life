@@ -7,6 +7,7 @@ static void	check_neighbours(t_data *data, int row, int col)
 	int jCol = col - 1 * (col > 0);
 	int endRow = row + 1 * (row < data->row - 1);
 	int endCol = col + 1 * (col < data->col - 1);
+	
 	for (int i = iRow; i <= endRow; i++)
 	{
 		for (int j = jCol; j <= endCol; j++)

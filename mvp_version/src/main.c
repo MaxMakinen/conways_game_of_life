@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:22:42 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/23 12:14:57 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/23 13:12:22 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	print_map(t_data *data, char **map)
 int	main(int ac, char **av)
 {
 	t_data	data;
+	int		len;
 
 	init_data(&data);
 	if (ac == 3)
@@ -64,10 +65,15 @@ int	main(int ac, char **av)
 		prep_map(av[1], &data);
 		data.iterations = atoi(av[2]);
 		std_rules(&data);
-		gameoflife(&data);
-		// print_map(&data, data.map1);
-		print_map(&data, data.map2);
-		
+		len = data.col * data.row;
+		while (data.iterations--)
+		{
+			gameoflife(&data);
+			memcpy(data.pool1, data.pool2, len);
+			memset(data.pool2, '.', (sizeof(char) * len));
+			data.pool2[len] = '\0';
+		}
+		print_map(&data, data.map1);
+		printf("\n");
 	}
-	// printf(" - \n");
 }
