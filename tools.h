@@ -5,7 +5,7 @@
 #include <strings.h>
 
 typedef struct s_data {
-	int len, mapsize;
+	int row, col;
 	char **map1;
 	char **map2;
 }	t_data;

@@ -37,10 +37,10 @@ int main ()
 	};
 	
 	t_data data = {
-		data.len = 35,
-		data.mapsize = 13,
+		data.col = 35,
+		data.row = 13,
 		data.map1 = map,
-		data.map2 = init_map(data.mapsize, data.len)
+		data.map2 = init_map(data.row, data.col)
 	};
 	
 	gameoflife(&data);

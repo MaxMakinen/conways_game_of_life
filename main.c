@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmakinen <mmakinen@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:22:42 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/22 16:46:02 by mmakinen         ###   ########.fr       */
+/*   Updated: 2022/06/22 20:29:19 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	print_map(t_data *data)
 		col = 0;
 		while (col < data->col)
 		{
-			printf("%c", data->map1[row][col]);
+			printf("%c", data->map2[row][col]);
 			col++;
 		}
 		printf("\n");
@@ -65,7 +65,8 @@ int	main(int ac, char **av)
 		data.iterations = atoi(av[2]);
 		std_rules(&data);
 		//TODO FOR TESTING: REMOVE.
+		gameoflife(&data);
 		print_map(&data);
 	}
-	printf(" - \n");
-}		
+	// printf(" - \n");
+}

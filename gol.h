@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gol.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmakinen <mmakinen@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:53:49 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/22 16:38:33 by mmakinen         ###   ########.fr       */
+/*   Updated: 2022/06/22 20:27:56 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,4 @@ typedef struct s_data
 void	prep_map(char *filename, t_data *data);
 void	read_map(int fd, t_data *data);
 void	init_map(t_data *data, int len);
+char	**gameoflife(t_data *data);
