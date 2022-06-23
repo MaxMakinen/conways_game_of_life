@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmakinen <mmakinen@hive.fi>                +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:37:02 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/22 16:57:15 by mmakinen         ###   ########.fr       */
+/*   Updated: 2022/06/23 11:40:27 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ void	init_map(t_data *data, int len)
 	int		counter = 0;
 	char	*temp1;
 	char	*temp2;
+	// printf("col: %d\n", len);
 
 	data->pool1 = (char *)malloc(sizeof(char) * len);
 	bzero(data->pool1, (sizeof(char) * len));
 	data->pool2 = (char *)malloc(sizeof(char) * len);
-	bzero(data->pool2, (sizeof(char) * len));
+	memset(data->pool2, '.', (sizeof(char) * len));
+	data->pool2[len] = '\0';
 	data->map1 = (char **)malloc(sizeof(char *) * data->row);
 	data->map2 = (char **)malloc(sizeof(char *) * data->row);
 	temp1 = data->pool1;
@@ -29,9 +31,9 @@ void	init_map(t_data *data, int len)
 	while (counter < data->row)
 	{
 		*(data->map1 + counter) = temp1;
-		temp1 += data->col;;
+		temp1 += data->col;
 		*(data->map2 + counter) = temp2;
-		temp2 += data->col;;
+		temp2 += data->col;
 		counter++;
 	}
 }
@@ -94,7 +96,7 @@ void	prep_map(char *filename, t_data *data)
 		dprintf(2, "Read ERROR\n");
 		exit(1);
 	}
-	init_map(data, (data->col * data->row) + data->row);
+	init_map(data, (data->col * data->row));
 	if (close(fd) == -1)
 	{
 		dprintf(2, "Close ERROR\n");
@@ -112,4 +114,5 @@ void	prep_map(char *filename, t_data *data)
 		dprintf(2, "Close ERROR\n");
 		exit(1);
 	}
+	printf("datacol: %d\n", data->col);
 }

@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:22:42 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/22 20:29:19 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/23 11:39:33 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	std_rules(t_data *data)
 	data->s_len = 2;
 }
 
-void	print_map(t_data *data)
+void	print_map(t_data *data, char **map)
 {
 	int	row = 0;
 	int	col = 0;
@@ -46,7 +46,7 @@ void	print_map(t_data *data)
 		col = 0;
 		while (col < data->col)
 		{
-			printf("%c", data->map2[row][col]);
+			printf("%c", map[row][col]);
 			col++;
 		}
 		printf("\n");
@@ -66,7 +66,9 @@ int	main(int ac, char **av)
 		std_rules(&data);
 		//TODO FOR TESTING: REMOVE.
 		gameoflife(&data);
-		print_map(&data);
+		// print_map(&data, data.map1);
+		// print_map(&data, data.map2);
+		
 	}
 	// printf(" - \n");
 }

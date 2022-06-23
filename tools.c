@@ -1,4 +1,4 @@
-#include "tools.h"
+#include "gol.h"
 
 static void	check_neighbours(t_data *data, int row, int col)
 {
@@ -31,6 +31,5 @@ char	**gameoflife(t_data *data)
 		for (int col = 0; col < data->col; col++)
 			check_neighbours(data, row, col);
 	}
-	// print_map(data->map2);
 	return NULL;
 }
