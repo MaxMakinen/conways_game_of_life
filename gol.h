@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:53:49 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/22 20:27:56 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/23 12:12:01 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,6 @@ typedef struct s_data
 void	prep_map(char *filename, t_data *data);
 void	read_map(int fd, t_data *data);
 void	init_map(t_data *data, int len);
-char	**gameoflife(t_data *data);
+void	print_map(t_data *data, char **map);
+void	gameoflife(t_data *data);
+

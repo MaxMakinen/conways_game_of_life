@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:22:42 by mmakinen          #+#    #+#             */
-/*   Updated: 2022/06/23 11:39:33 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/23 12:14:57 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,9 @@ int	main(int ac, char **av)
 		prep_map(av[1], &data);
 		data.iterations = atoi(av[2]);
 		std_rules(&data);
-		//TODO FOR TESTING: REMOVE.
 		gameoflife(&data);
 		// print_map(&data, data.map1);
-		// print_map(&data, data.map2);
+		print_map(&data, data.map2);
 		
 	}
 	// printf(" - \n");
